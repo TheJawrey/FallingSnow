@@ -1,4 +1,4 @@
-package com.luminarii.mercenglingen.states;
+package com.luminarii.fallingsnow.states;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;

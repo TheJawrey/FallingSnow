@@ -1,10 +1,11 @@
-package com.luminarii.mercenglingen;
+package com.luminarii.fallingsnow;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.state.StateBasedGame;
-import com.luminarii.mercenglingen.states.*;
+
+import com.luminarii.fallingsnow.states.*;
 
 public class FallingSnow extends StateBasedGame {
 

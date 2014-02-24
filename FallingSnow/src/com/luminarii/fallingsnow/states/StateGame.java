@@ -1,4 +1,4 @@
-package com.luminarii.mercenglingen.states;
+package com.luminarii.fallingsnow.states;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,7 +13,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.*;
 
-import com.luminarii.mercenglingen.FallingSnow;
+import com.luminarii.fallingsnow.FallingSnow;
 public class StateGame extends BasicGameState{
 
 	private Rectangle ground;
