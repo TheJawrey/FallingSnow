@@ -81,12 +81,12 @@ public class StateGame extends BasicGameState{
 		}
 		if(lives <= 0){
 			FallingSnow.gameOver.passScore(score);
-			game.enterState(1);
+			game.enterState(3);
 		}
 	}
 
 	@Override
 	public int getID() {
-		return 0;
+		return 1;
 	}
 }

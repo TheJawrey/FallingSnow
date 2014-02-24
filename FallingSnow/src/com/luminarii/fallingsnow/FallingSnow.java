@@ -10,7 +10,9 @@ import com.luminarii.fallingsnow.states.*;
 public class FallingSnow extends StateBasedGame {
 
 	public static StateGame game;
-	public static StateGameOver gameOver; 
+	public static StateGameOver gameOver;
+	public static StatePause pause;
+	public static StateMenu menu;
 	
     public FallingSnow() {
         super("Falling Snow");
@@ -31,7 +33,12 @@ public class FallingSnow extends StateBasedGame {
 	public void initStatesList(GameContainer container) throws SlickException {
 		game = new StateGame();
 		gameOver = new StateGameOver();
+		pause = new StatePause();
+		menu = new StateMenu();
+		
 		this.addState(game);
 		this.addState(gameOver);
+		this.addState(pause);
+		this.addState(menu);
 	}
 }
