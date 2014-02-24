@@ -20,16 +20,21 @@ public class StateGame extends BasicGameState{
 	private ArrayList<Circle> balls;
 	private int timePassed;
 	private Random random;
-	int lives;
-	int score;
+	private int lives;
+	private int score;
+	private int lastExit;
+	
+	public static int STATE_ID = 1;
 	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-		balls.clear();
-		ground.setCenterX(400);
-		timePassed=0;
-		lives = 3;
-		score = 0;
+		if(lastExit != StatePause.STATE_ID){
+			balls.clear();
+			ground.setCenterX(400);
+			timePassed=0;
+			lives = 3;
+			score = 0;
+		}
 		container.setMouseGrabbed(true);
 	}
 	@Override
@@ -81,12 +86,17 @@ public class StateGame extends BasicGameState{
 		}
 		if(lives <= 0){
 			FallingSnow.gameOver.passScore(score);
-			game.enterState(3);
+			lastExit = StateGameOver.STATE_ID;
+			game.enterState(StateGameOver.STATE_ID);
+		}
+		if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
+			lastExit = StatePause.STATE_ID;
+			game.enterState(StatePause.STATE_ID);
 		}
 	}
 
 	@Override
 	public int getID() {
-		return 1;
+		return STATE_ID;
 	}
 }

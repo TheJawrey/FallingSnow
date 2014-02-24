@@ -3,6 +3,7 @@ package com.luminarii.fallingsnow.states;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -11,6 +12,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class StateGameOver extends BasicGameState{
 
 	private int score;
+
+	public static int STATE_ID = 3;
 	
 	public void passScore(int sco){
 		score = sco;
@@ -31,15 +34,16 @@ public class StateGameOver extends BasicGameState{
 		g.drawString("GAME OVER!\nScore of "+score+".\nClick anywhere to restart.", 280, 290);
 	}
 
+
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
 		if(container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)){
-			game.enterState(1);
+			game.enterState(StateGame.STATE_ID);
 		}
 	}
 
 	@Override
 	public int getID() {
-		return 3;
+		return STATE_ID;
 	}
 }

@@ -8,6 +8,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class StateMenu extends BasicGameState{
 	
+	public static int STATE_ID = 0;
+	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 
@@ -29,6 +31,6 @@ public class StateMenu extends BasicGameState{
 
 	@Override
 	public int getID() {
-		return 0;
+		return STATE_ID;
 	}
 }
