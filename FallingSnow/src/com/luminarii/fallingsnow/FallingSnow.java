@@ -9,10 +9,9 @@ import com.luminarii.fallingsnow.states.*;
 
 public class FallingSnow extends StateBasedGame {
 
-	public static StateGame game;
-	public static StateGameOver gameOver;
-	public static StatePause pause;
 	public static StateMenu menu;
+	public static StateGame game;
+	public static StatePause pause;
 	
     public FallingSnow() {
         super("Falling Snow");
@@ -23,6 +22,7 @@ public class FallingSnow extends StateBasedGame {
             AppGameContainer app = new AppGameContainer(new FallingSnow());
             app.setTargetFrameRate(60);
             app.setDisplayMode(800, 600, false);
+            app.setShowFPS(false);
             app.start();
         } catch (SlickException e) {
             e.printStackTrace();
@@ -31,14 +31,12 @@ public class FallingSnow extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
-		game = new StateGame();
-		gameOver = new StateGameOver();
-		pause = new StatePause();
 		menu = new StateMenu();
+		game = new StateGame();
+		pause = new StatePause();
 		
-		this.addState(game);
-		this.addState(gameOver);
-		this.addState(pause);
 		this.addState(menu);
+		this.addState(game);
+		this.addState(pause);
 	}
 }
