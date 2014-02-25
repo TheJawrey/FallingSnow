@@ -7,6 +7,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
@@ -16,6 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.*;
 
 import com.luminarii.fallingsnow.FallingSnow;
+import com.luminarii.fallingsnow.graphix.Graphix;
 
 public class StateGame extends BasicGameState{
 
@@ -51,11 +53,12 @@ public class StateGame extends BasicGameState{
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.red);
 		g.fill(ground);
-		g.setColor(Color.white);
+		g.setColor(Color.red);
 		for(Circle c : balls){
-			g.fill(c);
+			Graphix.snowflake.draw(c.getX(), c.getY());
 		}
 		g.drawString(String.valueOf(score), 400, 30);
+		Graphix.snowflake.draw(100, 100);
 	}
 
 	@Override
@@ -63,7 +66,7 @@ public class StateGame extends BasicGameState{
 		timePassed += delta;
 		if(timePassed >350){
 			timePassed = 0;
-			balls.add(new Circle(100+random.nextInt(500), 0, 10));
+			balls.add(new Circle(100+random.nextInt(500), 0, 13));
 		}
 		for(Circle c : balls){
 			c.setCenterY(c.getCenterY()+(delta/3.5f));

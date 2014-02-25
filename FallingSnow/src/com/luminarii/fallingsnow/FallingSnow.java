@@ -5,6 +5,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.luminarii.fallingsnow.graphix.Graphix;
 import com.luminarii.fallingsnow.states.*;
 
 public class FallingSnow extends StateBasedGame {

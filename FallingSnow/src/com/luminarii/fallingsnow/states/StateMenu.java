@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.luminarii.fallingsnow.graphix.Graphix;
+
 public class StateMenu extends BasicGameState{
 	
 	private int score;
@@ -27,6 +29,7 @@ public class StateMenu extends BasicGameState{
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		scoreToShow = false;
+        Graphix.init();
 	}
 
 	@Override
