@@ -53,10 +53,10 @@ public class StateGame extends BasicGameState{
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.red);
 		g.fill(ground);
-		g.setColor(Color.red);
 		for(Circle c : balls){
 			Graphix.snowflake.draw(c.getX(), c.getY());
 		}
+		g.setColor(Color.white);
 		g.drawString(String.valueOf(score), 400, 30);
 		Graphix.snowflake.draw(100, 100);
 	}
