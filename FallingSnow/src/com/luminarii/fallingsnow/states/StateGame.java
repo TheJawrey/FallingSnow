@@ -51,6 +51,7 @@ public class StateGame extends BasicGameState{
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+		Graphix.backdrop.draw(0, 0);
 		g.setColor(Color.red);
 		g.fill(ground);
 		for(Circle c : balls){
@@ -58,7 +59,6 @@ public class StateGame extends BasicGameState{
 		}
 		g.setColor(Color.white);
 		g.drawString(String.valueOf(score), 400, 30);
-		Graphix.snowflake.draw(100, 100);
 	}
 
 	@Override
