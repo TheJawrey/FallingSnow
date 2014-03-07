@@ -1,19 +1,19 @@
 package com.luminarii.fallingsnow.states;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
 import com.luminarii.fallingsnow.graphix.Graphix;
+import com.luminarii.fallingsnow.sounds.SoundFX;
 
 public class StateMenu extends BasicGameState{
 	
 	private int score;
 	private boolean scoreToShow;
+	private int highScore;
 	
 	public static int STATE_ID = 1;
 	
@@ -25,21 +25,26 @@ public class StateMenu extends BasicGameState{
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		container.setMouseGrabbed(false);
-	}
+		if(score > highScore){
+			highScore = score;
+		}
+		}
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
+		SoundFX.init();	
 		scoreToShow = false;
         Graphix.init();
+        SoundFX.songYay.play();
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		g.setBackground(Color.blue);
-		g.setColor(Color.white);
-		g.drawString("                   *Falling Snow*\nLeft Click to start game     Right Click to quit", 150, 300);
+		Graphix.backdropMenu.draw(0, 0);
+		g.setFont(Graphix.font);
 		if(scoreToShow){
-			g.drawString("Last Score: "+score, 320, 350);
+			g.drawString(String.valueOf(score), 295, 485);
 		}
+		g.drawString(String.valueOf(highScore), 670, 481);
 	}
 
 	@Override

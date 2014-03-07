@@ -6,6 +6,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.luminarii.fallingsnow.graphix.Graphix;
+import com.luminarii.fallingsnow.sounds.SoundFX;
 import com.luminarii.fallingsnow.states.*;
 
 public class FallingSnow extends StateBasedGame {
@@ -25,11 +26,11 @@ public class FallingSnow extends StateBasedGame {
             app.setDisplayMode(800, 600, false);
             app.setShowFPS(false);
             app.start();
+            
         } catch (SlickException e) {
             e.printStackTrace();
         }
     }
-
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		menu = new StateMenu();

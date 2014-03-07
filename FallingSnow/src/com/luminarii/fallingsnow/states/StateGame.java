@@ -2,22 +2,18 @@ package com.luminarii.fallingsnow.states;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.*;
-
 import com.luminarii.fallingsnow.FallingSnow;
 import com.luminarii.fallingsnow.graphix.Graphix;
+import com.luminarii.fallingsnow.sounds.SoundFX;;
+
 
 public class StateGame extends BasicGameState{
 
@@ -27,6 +23,9 @@ public class StateGame extends BasicGameState{
 	private Random random;
 	private int score;
 	private int lastExit;
+	private ArrayList<Circle> superSnow;
+	private int powerUp1;
+	private int powerChance1;
 	
 	public static int STATE_ID = 2;
 	
@@ -37,7 +36,10 @@ public class StateGame extends BasicGameState{
 			ground.setCenterX(400);
 			timePassed=0;
 			score = 0;
-			container.setMouseGrabbed(true);
+			container.setMouseGrabbed(false);
+			
+			
+		
 		}
 	}
 	@Override
@@ -47,25 +49,28 @@ public class StateGame extends BasicGameState{
 		timePassed = 0;
 		random = new Random();
 		score = 0;
-	}
+		powerUp1 = 1;
+		}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		Graphix.backdrop.draw(0, 0);
+		Graphix.backdropGame.draw(0, 0);
 		g.setColor(Color.red);
 		g.fill(ground);
 		for(Circle c : balls){
 			Graphix.snowflake.draw(c.getX(), c.getY());
 		}
 		g.setColor(Color.white);
-		g.drawString(String.valueOf(score), 400, 30);
+		Graphix.font.drawString(400 - (Graphix.font.getWidth(String.valueOf(score)) / 2), 30, String.valueOf(score));
 	}
+	
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		timePassed += delta;
 		if(timePassed >350){
 			timePassed = 0;
+			powerChance1 = random.nextInt(10);
 			balls.add(new Circle(100+random.nextInt(500), 0, 13));
 		}
 		for(Circle c : balls){
@@ -82,6 +87,7 @@ public class StateGame extends BasicGameState{
 			}else if(c.intersects(ground)){
 				balls.remove(i);
 				score++;
+				SoundFX.snowCatch.play(1.0f, 0.5f);
 			}
 		}
 		if(container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)){

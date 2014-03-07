@@ -9,6 +9,7 @@
 	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="lib/slick/lib/slick.jar"/>
 	<classpathentry kind="lib" path="lib/slick/lib/jinput.jar"/>
+	<classpathentry kind="lib" path="lib/Jorbis.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
